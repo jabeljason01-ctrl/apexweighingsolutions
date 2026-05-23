@@ -3,139 +3,499 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apex Solutions | Professional Weighing Scale Services</title>
+    <title>Apex Solutions | Professional Weighing Scale Services & Data Systems</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; color: #333; }
-        header { background: #004a99; color: #fff; padding: 2rem; text-align: center; }
-        .container { padding: 2rem; max-width: 1000px; margin: auto; }
-        .services { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; }
-        .service-card { border: 1px solid #ddd; padding: 1.5rem; flex: 1 1 30%; border-radius: 8px; background: #f9f9f9; }
-        .cta-button { background: #ffcc00; color: #333; padding: 10px 20px; text-decoration: none; font-weight: bold; border-radius: 5px; }
-        footer { background: #333; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
-        h2 { color: #004a99; border-bottom: 2px solid #ffcc00; display: inline-block; }
+        :root {
+            --apex-blue: #004aad;
+            --apex-dark: #111827;
+            --apex-light: #f8fafc;
+            --gold: #ffcc00;
+            --whatsapp-green: #25D366;
+            --white: #ffffff;
+            --success: #16a34a;
+            --border: #e2e8f0;
+            --text-muted: #64748b;
+        }
+
+        * { box-sizing: border-box; transition: all 0.2s ease; }
+        
+        body { 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            color: #333; 
+            background-color: #fff;
+            scroll-behavior: smooth;
+        }
+
+        /* Top Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+        .nav-logo { font-weight: 800; font-size: 1.4rem; color: var(--apex-blue); letter-spacing: 0.5px; }
+        nav ul { display: flex; list-style: none; margin: 0; padding: 0; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a { text-decoration: none; color: var(--apex-dark); font-weight: 600; font-size: 0.95rem; }
+        nav ul li a:hover { color: var(--apex-blue); }
+
+        /* Top Logo Branding Frame */
+        .logo-bar {
+            text-align: center; 
+            background: var(--white); 
+            padding: 15px;
+        }
+        .logo-img { height: auto; max-width: 95px; border-radius: 8px; }
+
+        /* Main Hero Banner */
+        header { 
+            background: linear-gradient(rgba(17, 24, 39, 0.85), rgba(17, 24, 39, 0.9)), url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&q=80&w=1200');
+            background-size: cover;
+            background-position: center;
+            color: #fff; 
+            padding: 5rem 2rem; 
+            text-align: center; 
+        }
+        header h1 { font-size: 3rem; margin: 0; font-weight: 800; letter-spacing: 1px; }
+        header p { font-size: 1.25rem; margin: 10px 0 25px 0; opacity: 0.9; }
+
+        .container { padding: 40px 5%; max-width: 1140px; margin: auto; }
+        
+        section { padding: 40px 0; }
+        
+        h2 { 
+            color: var(--apex-blue); 
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--gold);
+            border-radius: 2px;
+        }
+
+        /* Action Buttons */
+        .cta-button { 
+            background: var(--gold); 
+            color: #111; 
+            padding: 14px 28px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            border-radius: 8px; 
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(255, 204, 0, 0.4); }
+
+        /* Services Grid */
+        .services { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
+        .service-card { 
+            border: 1px solid var(--border); 
+            padding: 2rem; 
+            flex: 1 1 300px; 
+            border-radius: 12px; 
+            background: var(--apex-light); 
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+        .service-card h3 { color: var(--apex-blue); margin-top: 0; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; }
+        
+        /* Portfolio Frame */
+        .portfolio-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+        .portfolio-card { 
+            width: 320px; 
+            background: white; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); 
+            overflow: hidden; 
+            border: 1px solid var(--border);
+        }
+        .portfolio-card img { width: 100%; height: 230px; object-fit: cover; }
+        .portfolio-details { padding: 20px; }
+        .portfolio-details h3 { margin-top: 0; color: var(--apex-blue); font-size: 1.25rem; }
+
+        /* Products Grid Layout */
+        .products-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+            gap: 20px; 
+        }
+        .product-item {
+            background: white;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        .product-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
+        .product-item p { font-weight: 600; margin: 5px 0 0 0; color: var(--apex-dark); }
+
+        /* --- DATA PORTAL SYSTEM WORKSTATION --- */
+        .portal-wrapper { width: 100%; margin-top: 20px; }
+        .portal-card { 
+            background: var(--white); 
+            padding: 2.5rem; 
+            border-radius: 16px; 
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.08); 
+            max-width: 850px;
+            margin: 0 auto;
+            border-top: 6px solid var(--apex-blue);
+        }
+        .stats-panel { display: flex; gap: 15px; margin-bottom: 25px; }
+        .stat-box {
+            flex: 1;
+            background: var(--apex-light);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+        .stat-box span { display: block; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
+        .stat-box strong { font-size: 1.4rem; color: var(--apex-blue); font-weight: 800; }
+
+        .input-group { display: flex; flex-direction: column; gap: 14px; margin-bottom: 1.5rem; text-align: left; }
+        .row { display: flex; gap: 12px; }
+        input { padding: 14px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 1rem; width: 100%; background: #fff; }
+        input:focus { outline: none; border-color: var(--apex-blue); box-shadow: 0 0 0 3px rgba(0, 74, 173, 0.15); }
+        
+        .button-row { display: flex; gap: 12px; margin-top: 5px; }
+        .btn-sync, .btn-export { color: white; border: none; padding: 15px; border-radius: 10px; cursor: pointer; font-weight: 700; flex: 1; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+        .btn-sync { background: var(--apex-blue); }
+        .btn-export { background: var(--success); }
+
+        .search-container { margin-top: 25px; margin-bottom: 12px; position: relative; text-align: left; }
+        .search-container input { padding-left: 40px; font-size: 0.9rem; padding-top: 11px; padding-bottom: 11px; }
+        .search-container i { position: absolute; left: 15px; top: 15px; color: var(--text-muted); }
+
+        .table-container { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); text-align: left; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; background: white; min-width: 600px; }
+        th, td { text-align: left; padding: 14px; border-bottom: 1px solid var(--border); }
+        th { background: #f8fafc; color: #475569; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; }
+        .col-date { width: 180px; color: var(--text-muted); font-size: 0.8rem; }
+        .col-weight { font-weight: 800; color: var(--apex-blue); text-align: right; padding-right: 25px; }
+        .badge { background: #e0f2fe; color: #0369a1; padding: 4px 8px; border-radius: 6px; font-weight: 700; font-size: 0.75rem; }
+
+        /* Floating WhatsApp Anchor */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp-green);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        /* Content Blocks layout spacing */
+        .about-box { max-width: 800px; margin: 0 auto; text-align: center; color: #4b5563; font-size: 1.1rem; }
+        .contact-box { background: var(--apex-light); border: 1px solid var(--border); border-radius: 12px; padding: 30px; max-width: 500px; margin: 0 auto; }
+        .contact-box p { margin: 12px 0; font-size: 1.05rem; display: flex; align-items: center; gap: 12px; text-align: left; }
+        .contact-box i { color: var(--apex-blue); width: 20px; text-align: center; }
+
+        footer { background: var(--apex-dark); color: #94a3b8; text-align: center; padding: 2.5rem 1rem; margin-top: 4rem; font-size: 0.95rem; }
+        footer strong { color: white; }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.25rem; }
+            nav { flex-direction: column; gap: 15px; text-align: center; }
+            nav ul li { margin: 0 10px; }
+            .stats-panel { flex-direction: column; gap: 10px; }
+        }
     </style>
 </head>
 <body>
-<div style="text-align: center; background: white; padding: 15px;">
-<div style="text-align: center; background: white; padding: 10px;">
-    <img src="1776190325156.png" alt="Apex Solutions Logo" style="center: 30%; height: auto; max-width: 100px;">
+
+<a href="https://wa.me/256702234732?text=Hello%20Apex%20Solutions,%20I%20need%20assistance%20with%20a%20technical%20service." class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<nav>
+    <div class="nav-logo">APEX SOLUTIONS</div>
+    <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Projects</a></li>
+        <li><a href="#products">Products & Spares</a></li>
+        <li><a href="#data-portal-section">Data Portal</a></li>
+        <li><a href="#contact">Contact Desk</a></li>
+    </ul>
+</nav>
+
+<div class="logo-bar">
+    <img src="1776190325156.png" alt="Apex Solutions Logo" class="logo-img">
 </div>
-
-    
-</div>
-
-</div>
-
-
-</div>
-
-
-
 
 <header>
     <h1>APEX SOLUTIONS</h1>
-    <p>Precision Calibration & Technical Services</p>
+    <p>Precision Calibration & Technical Industrial Services</p>
     <br>
-    <a href="https://wa.me/256702234732" class="cta-button">Request Service via WhatsApp</a>
+    <a href="https://wa.me/256702234732?text=Hello%20Apex%20Solutions,%20I%20need%20assistance%20with%20a%20technical%20service." class="cta-button" target="_blank">
+        <i class="fab fa-whatsapp"></i> Request Service via WhatsApp
+    </a>
 </header>
 
 <div class="container">
-    <section>
+    
+    <section id="services">
         <h2>Our Services</h2>
         <div class="services">
             <div class="service-card">
-                <h3>Repair & Maintenance</h3>
-                <p>Expert repair for industrial indicators, load cells, and PCB components from major brand.</p>
+                <h3><i class="fas fa-tools"></i> Repair & Maintenance</h3>
+                <p>Expert repair for industrial indicators, load cells, and PCB components from major brands.</p>
             </div>
             <div class="service-card">
-                <h3>Professional Calibration</h3>
+                <h3><i class="fas fa-balance-scale"></i> Professional Calibration</h3>
                 <p>Ensuring your scales are accurate and compliant with industry standards for maximum reliability.</p>
             </div>
             <div class="service-card">
-                <h3>Custom Protection</h3>
-                <p>Manufacturing bespoke moisture and dust shields to extend the life of your weighing equipment.</p>
+                <h3><i class="fas fa-shield-alt"></i> Custom Protection</h3>
+                <p>Manufacturing bespoke moisture and dust shields to extend the operational life of your weighing equipment.</p>
             </div>
         </div>
     </section>
-<section id="portfolio" style="padding: 60px 20px; background-color: #f9f9f9; text-align: center;">
-    <h2 style="color: #333; margin-bottom: 10px;">Our Recent Projects</h2>
-    <p style="color: #666; margin-bottom: 40px;">Precision engineering and innovative protection for industrial weighing systems.</p>
-    
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+
+    <section id="portfolio">
+        <h2>Our Recent Projects</h2>
+        <p style="text-align: center; color: #666; margin-top: -20px; margin-bottom: 40px;">Precision engineering and innovative protection for industrial weighing systems.</p>
         
-        <div style="width: 300px; background: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden;">
-            <img src="Apex-indicator-shield.jpg" alt="Custom Scale Shield" style="width: 100%; height: 250px; object-fit: cover;">
-            <div style="padding: 20px; text-align: left;">
-                <h3 style="margin-top: 0; color: #0056b3;">Innovation: Apex Shield</h3>
-                <p style="font-size: 14px; color: #555;">Custom-fit moisture and dust protection designed to extend indicator lifespan.</p>
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <img src="Apex-indicator-shield.jpg" alt="Custom Scale Shield">
+                <div class="portfolio-details">
+                    <h3>Innovation: Apex Shield</h3>
+                    <p>Custom-fit moisture and dust protection designed to extend indicator lifespan.</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <img src="crane-scale-calibration.jpg" alt="Crane Scale Calibration">
+                <div class="portfolio-details">
+                    <h3>Crane Scale Service</h3>
+                    <p>Precision calibration and testing of digital crane scales to ensure safety and accuracy.</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <img src="pcb-repair-diagnostics.jpg" alt="PCB Repair">
+                <div class="portfolio-details">
+                    <h3>Technical Diagnostics</h3>
+                    <p>Advanced circuit board repair and component-level troubleshooting.</p>
+                </div>
             </div>
         </div>
-
-        <div style="width: 300px; background: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden;">
-            <img src="crane-scale-calibration.jpg" alt="Crane Scale Calibration" style="width: 100%; height: 250px; object-fit: cover;">
-            <div style="padding: 20px; text-align: left;">
-                <h3 style="margin-top: 0; color: #0056b3;">Crane Scale Service</h3>
-                <p style="font-size: 14px; color: #555;">Precision calibration and testing of digital crane scales to ensure safety and accuracy.</p>
-            </div>
-        </div>
-
-        <div style="width: 300px; background: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden;">
-            <img src="pcb-repair-diagnostics.jpg" alt="PCB Repair" style="width: 100%; height: 250px; object-fit: cover;">
-            <div style="padding: 20px; text-align: left;">
-                <h3 style="margin-top: 0; color: #0056b3;">Technical Diagnostics</h3>
-                <p style="font-size: 14px; color: #555;">Advanced circuit board repair and component-level troubleshooting.</p>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<section id="products" style="margin-top: 3rem; padding: 20px; text-align: center; background-color: #f9f9f9; border-radius: 10px;">
-    <h2 style="color: #0056b3; margin-bottom: 20px;">Our Products & Technical Spares</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-        
-        <div><img src="300kg-loadcell.jpeg" style="width:100%; border-radius:8px;"><p style="font-weight:bold;">300kg Load Cell</p></div>
-        <div><img src="650kg-loadcell.jpeg" style="width:100%; border-radius:8px;"><p style="font-weight:bold;">650kg Load Cell</p></div>
-        <div><img src="4v-battery.jpeg" style="width:100%; border-radius:8px;"><p style="font-weight:bold;">4V Battery</p></div>
-        <div><img src="crane-scales.jpeg" style="width:100%; border-radius:8px;"><p style="font-weight:bold;">Crane Scales</p></div>
-        <div><img src="350kg-tcs-scale.webp" style="width:100%; border-radius:8px;"><p style="font-weight:bold;">350kg TCS Scale</p></div>
-        <div><img src="600kg-a12-scale.jpeg" style="width:100%; border-radius:8px;"><p style="font-weight:bold;">600kg A12 Scale</p></div>
-        
-
-        <div><img src="waterproof-40kg.webp" style="width:100%; border-radius:8px;"><p style="font-weight:bold;">Waterproof Scale</p></div>
-        
-
-        <div><img src="Battery-4v.jpeg" style="width:100%; border-radius:8px;"><p style="font-weight:bold;">Backup Battery</p></div>
-
-    </div>
-</section>
-
-
-
-<section style="margin-top: 3rem; padding: 0 20px; text-align: center;">
-    <h2 style="color: #0056b3;">About Us</h2>
-    <p style="max-width: 800px; margin: 0 auto; line-height: 1.6; color: #333;">
-        Based in Kampala, Apex Solutions is dedicated to providing high-quality technical support for weighing systems. 
-        We specialize in troubleshooting complex error codes and optimizing industrial scale performance.
-    </p>
-</section>
-
-<section style="margin-top: 3rem; padding: 0 20px; text-align: center;">
-    <h2 style="color: #0056b3; display: inline-block; border-bottom: 3px solid #ffcc00; padding-bottom: 5px;">Contact</h2>
-    <div style="margin-top: 20px; line-height: 1.8;">
-        <p><strong>Phone:</strong> +256 702 234732</p>
-        <p><strong>Email:</strong> Jabeljason01@gmail.com</p>
-        <p><strong>Location:</strong> Kampala, Uganda</p>
-    </div>
-</section>
-
-        <p><strong>Location:</strong> Kampala, Uganda</p>
     </section>
+
+    <section id="products">
+        <h2>Our Products & Technical Spares</h2>
+        <div class="products-grid">
+            <div class="product-item"><img src="300kg-loadcell.jpeg"><p>300kg Load Cell</p></div>
+            <div class="product-item"><img src="650kg-loadcell.jpeg"><p>650kg Load Cell</p></div>
+            <div class="product-item"><img src="4v-battery.jpeg"><p>4V Battery</p></div>
+            <div class="product-item"><img src="crane-scales.jpeg"><p>Crane Scales</p></div>
+            <div class="product-item"><img src="350kg-tcs-scale.webp"><p>350kg TCS Scale</p></div>
+            <div class="product-item"><img src="600kg-a12-scale.jpeg"><p>600kg A12 Scale</p></div>
+            <div class="product-item"><img src="waterproof-40kg.webp"><p>Waterproof Scale</p></div>
+            <div class="product-item"><img src="Battery-4v.jpeg"><p>Backup Battery</p></div>
+        </div>
+    </section>
+
+    <section id="data-portal-section" style="background-color: var(--apex-light); border-radius: 16px; padding: 40px 20px; margin-top: 20px;">
+        <h2>Apex Data Terminal Log</h2>
+        <p style="text-align: center; color: #666; margin-top: -20px; margin-bottom: 40px;">Secure local storage logging workstation for fields ops. Formulate CSV compliance lists instantly.</p>
+        
+        <div class="portal-wrapper">
+            <div class="portal-card">
+                <div class="stats-panel">
+                    <div class="stat-box">
+                        <span>Total Net Mass Logged</span>
+                        <strong id="totalWeightDisplay">0.00 kg</strong>
+                    </div>
+                    <div class="stat-box">
+                        <span>Active Record Logs Count</span>
+                        <strong id="recordCountDisplay">0</strong>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="clientInput" placeholder="Client / Company Name">
+                    <input type="text" id="scaleIdInput" placeholder="Scale ID / Machine Tag Identifier">
+                    <div class="row">
+                        <input type="number" id="weightInput" placeholder="Gross Weight Value Entry" step="any">
+                        <input type="text" id="unitInput" placeholder="Unit" value="kg" style="flex: 0.35; text-align: center; font-weight: bold; color: var(--apex-blue);">
+                    </div>
+                    <div class="button-row">
+                        <button class="btn-sync" onclick="saveData()"><i class="fas fa-plus-circle"></i> Commit Reading</button>
+                        <button class="btn-export" onclick="exportToExcel()"><i class="fas fa-file-excel"></i> Export Ledger (.CSV)</button>
+                    </div>
+                </div>
+
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="tableSearch" onkeyup="filterTable()" placeholder="Quick filter ledger database by client name or scale tags...">
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="col-date">Registered Timestamp</th>
+                                <th>Client & Target Machine</th>
+                                <th style="text-align: right; padding-right: 25px;">Verified Measurement</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dataTable"></tbody>
+                    </table>
+                </div>
+                <button onclick="clearLogs()" style="background:none; color:#ef4444; font-size:0.75rem; border:none; margin-top:20px; cursor:pointer; font-weight: 600;"><i class="fas fa-trash-alt"></i> Wipe Local System Memory</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <div class="about-box">
+            <p>
+                Based in Kampala, Apex Solutions is dedicated to providing high-quality technical support for weighing systems. 
+                We specialize in troubleshooting complex error codes, component-level repairs, and optimizing industrial scale performance across logistics, shipping, and metal recycling sectors.
+            </p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Desk</h2>
+        <div class="contact-box">
+            <p><i class="fas fa-phone-alt"></i> <strong>Phone:</strong> +256 702 234732</p>
+            <p><i class="fas fa-envelope"></i> <strong>Email:</strong> Jabeljason01@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Kampala, Uganda</p>
+        </div>
+    </section>
+
 </div>
 
 <footer>
-    <p>&copy; 2026 Apex Solutions. All Rights Reserved.    jabel.</p>
+    <p>&copy; 2026 <strong>Apex Solutions</strong>. All Rights Reserved. | Kampala, Uganda</p>
 </footer>
+
+<script>
+    window.onload = displayData;
+
+    function saveData() {
+        const weightValue = document.getElementById('weightInput').value;
+        if (!weightValue || isNaN(weightValue)) return alert("Please input a valid numeric mass reading value.");
+
+        const entry = {
+            timestamp: new Date().toLocaleString('en-GB', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit', second:'2-digit' }),
+            client: document.getElementById('clientInput').value.trim() || "General Client",
+            scaleId: document.getElementById('scaleIdInput').value.trim() || "Unspecified Terminal ID",
+            weight: parseFloat(weightValue).toFixed(2),
+            unit: document.getElementById('unitInput').value.trim() || "kg"
+        };
+
+        let history = JSON.parse(localStorage.getItem('apexScaleData')) || [];
+        history.unshift(entry);
+        localStorage.setItem('apexScaleData', JSON.stringify(history));
+        
+        document.getElementById('weightInput').value = '';
+        displayData();
+    }
+
+    function displayData() {
+        const history = JSON.parse(localStorage.getItem('apexScaleData')) || [];
+        const tableBody = document.getElementById('dataTable');
+        let aggregateMass = 0;
+        
+        if(history.length === 0) {
+            tableBody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:#94a3b8; padding: 30px;">System ledger database is currently empty.</td></tr>`;
+            document.getElementById('totalWeightDisplay').innerText = "0.00 kg";
+            document.getElementById('recordCountDisplay').innerText = "0";
+            return;
+        }
+
+        tableBody.innerHTML = history.map(item => {
+            if(item.unit.toLowerCase() === 'kg') {
+                aggregateMass += parseFloat(item.weight);
+            }
+            return `
+                <tr>
+                    <td class="col-date">${item.timestamp}</td>
+                    <td><strong>${item.client}</strong><br><small style="color:#64748b;"><i class="fas fa-tag"></i> ID: ${item.scaleId}</small></td>
+                    <td class="col-weight">${item.weight} <span class="badge">${item.unit}</span></td>
+                </tr>
+            `;
+        }).join('');
+
+        document.getElementById('totalWeightDisplay').innerText = aggregateMass.toFixed(2) + " kg";
+        document.getElementById('recordCountDisplay').innerText = history.length;
+    }
+
+    function filterTable() {
+        const query = document.getElementById('tableSearch').value.toLowerCase();
+        const rows = document.getElementById('dataTable').getElementsByTagName('tr');
+
+        for (let i = 0; i < rows.length; i++) {
+            const contextCell = rows[i].getElementsByTagName('td')[1];
+            if (contextCell) {
+                const textContent = contextCell.textContent || contextCell.innerText;
+                if (textContent.toLowerCase().indexOf(query) > -1) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function exportToExcel() {
+        const history = JSON.parse(localStorage.getItem('apexScaleData')) || [];
+        if (history.length === 0) return alert("No log history database records found to export CSV document report.");
+        
+        let csvContent = "\uFEFFDate & Time,Client Company Target,Scale Identifier Tag,Gross Mass Value,Unit\n";
+        history.forEach(item => {
+            csvContent += `"${item.timestamp}","${item.client}","${item.scaleId}","${item.weight}","${item.unit}"\n`;
+        });
+        
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = `Apex_Scale_Report_${new Date().toISOString().slice(0,10)}.csv`;
+        link.click();
+    }
+
+    function clearLogs() {
+        if(confirm("Permanently wipe local scale logging database history? Action cannot be undone.")) { 
+            localStorage.removeItem('apexScaleData'); 
+            displayData(); 
+        }
+    }
+</script>
 
 </body>
 </html>
